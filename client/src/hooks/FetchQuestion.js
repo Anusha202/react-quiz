@@ -39,3 +39,22 @@ export const useFetchQuestion=()=>{
 return [getData,setGetData]
 
 }
+
+
+//moveaction dispatch function
+export const MoveNextQuestion=()=>async(dispatch)=>{
+    try{
+dispatch(Action.moveNextAction());//inc trace by 1
+    }catch(error){
+        console.log(error)
+    }
+}
+
+//prevaction dispatch functn
+export const MovePrevQuestion=()=>async(dispatch)=>{
+    try{
+dispatch(Action.movePrevAction());//dec trace by 1
+    }catch(error){
+        console.log(error)
+    }
+}

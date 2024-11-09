@@ -20,7 +20,7 @@ const trace=useSelector(state=>state.questions.trace)
         // console.log(isLoading)
         // console.log(apiData)
         // console.log(serverError)
-        console.log(questions)
+        // console.log(questions)
         // console.log(questions.queue[0])//access only one question by putting 0
     })
 
