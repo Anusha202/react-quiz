@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from 'react'
 
 // import '../styles/quiz.css'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 
 //custom hook
 import { useFetchQuestion } from '../hooks/FetchQuestion'
+
+import { updateResult } from '../hooks/setResult'
 
 
 export default function Questions({onChecked}) {
 
     const [checked,setChecked]=useState(undefined)
+    const {trace}=useSelector(state=>state.questions);
    const [{isLoading,apiData,serverError}]= useFetchQuestion()
 
 
 const questions=useSelector(state=>state.questions.queue[state.questions.trace])
-const trace=useSelector(state=>state.questions.trace)
+// const trace=useSelector(state=>state.questions.trace)
+const dispatch=useDispatch()
 
     useEffect(()=>{
-        // console.log(isLoading)
-        // console.log(apiData)
-        // console.log(serverError)
-        // console.log(questions)
-        // console.log(questions.queue[0])//access only one question by putting 0
-    })
+        // console.log({trace,checked})
+        dispatch(updateResult({trace,checked}))
+    },[checked])
 
     function onselect(i){
-        // console.log(i)
         onChecked(i)
+        setChecked(i)
     }
 
     if(isLoading) return <h3 className='text-light'> isLoading</h3>

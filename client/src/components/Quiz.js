@@ -4,18 +4,18 @@ import {MoveNextQuestion, MovePrevQuestion} from '../hooks/FetchQuestion';
 import { PushAnswer } from '../hooks/setResult';
 //redux store import
 import {useSelector, useDispatch} from 'react-redux'
-
+import {Navigate} from 'react-router-dom';
 
 export default function Quiz() {
     const [check,setChecked]=useState(undefined)
 
-    const state=useSelector(state=>state);
+    const result=useSelector(state=>state.result.result);
     // const trace =useSelector(state=>state.questions.trace)
     const {queue,trace}=useSelector(state=>state.questions);
 const dispatch=useDispatch()
 
     useEffect(()=>{
-        console.log(state)
+        console.log(result)
     })
 
     //next btn event handler
@@ -23,7 +23,11 @@ const dispatch=useDispatch()
         console.log('On next click')
         if(trace<queue.length){
             dispatch(MoveNextQuestion());
+
+            //insert new result in array
+            if(result.length<=trace){
             dispatch(PushAnswer(check))
+        }
         }
         //update trace value by 1 using move next action
        
@@ -40,6 +44,12 @@ function onChecked(check){
     console.log(check)
     setChecked(check)
 }
+
+//finished exam after last question
+if(result.length && result.length>=queue.length){
+    return <Navigate to={'/result'} replace={true}></Navigate>
+}
+
 
   return (
     <div className='container'>
