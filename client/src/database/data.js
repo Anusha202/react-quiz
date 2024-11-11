@@ -18,3 +18,4 @@ export default [
         ]
     }
 ]
+export const answers=[1,0];
