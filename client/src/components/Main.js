@@ -1,42 +1,56 @@
-import React, { useRef } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'  // Import useNavigate hook
 import '../styles/main.css'
 import { useDispatch } from 'react-redux'
 import { setUserId } from '../redux/result_reducer'
 
 export default function Main() {
-    const inputRef=useRef(null)
+    const inputRef = useRef(null)
+    const dispatch = useDispatch()
+    const [error, setError] = useState('') // State to hold error message
+    const navigate = useNavigate() // Hook for programmatic navigation
 
-    const dispatch=useDispatch()
+    function startQuiz(e) {
+        e.preventDefault()  // Prevent the default behavior of <Link /> or form submission
 
-    function startQuiz(){
-      if(inputRef.current?.value){
-dispatch(setUserId(inputRef.current?.value))
-      }
+        const username = inputRef.current?.value
+        if (!username) {
+            setError('Please enter your username to start the quiz.') // Show error if empty
+        } else {
+            setError('') // Clear error message
+            dispatch(setUserId(username)) // Dispatch username to Redux store
+            navigate('/quiz') // Navigate to the quiz page
+        }
     }
 
-  return (
-    <div className='container'>
-        <h1 className='title text-light'>
-            Quiz App
-        </h1>
-      <ol>
-        <li>10 questions will be asked one after another</li>
-        <li>10 points is awarded for each correct answer</li>
-        <li>Three options are provided and you can choose only one option</li>
-        <li>The result will be declared after you answer all the ten questions</li>
-       
-      </ol>
-      <form id="form">
-        <input ref={inputRef} type='text' placeholder='Enter your username'/>
-      </form>
+    return (
+        <div className='container'>
+            {/* Logo Section */}
+            <div className="logo-container">
+                <img src="/quizz.avif" alt="MERN Quiz Logo" className="logo" />
+            </div>
 
-      <div className='start'>
-        <Link className='btn' to={'quiz'} onClick={startQuiz}>Start</Link>
-      </div>
+            <h1 className='title text-light'>
+                Mern Quiz
+            </h1>
 
-   
+            <ol>
+                <li>5 questions will be asked one after another.</li>
+                <li>10 points are awarded for each correct answer.</li>
+                <li>Three options are provided and you can choose only one option.</li>
+                <li>The result will be declared after you answer all the five questions.</li>
+            </ol>
 
-    </div>
-  )
+            <form id="form" onSubmit={startQuiz}>  {/* Handle form submission */}
+                <input ref={inputRef} type='text' placeholder='Enter your username' />
+            </form>
+
+            {/* Display error message if username is empty */}
+            {error && <div className="error-message">{error}</div>}
+
+            <div className='start'>
+                <button className='btn' onClick={startQuiz}>Start</button> {/* Use button instead of Link */}
+            </div>
+        </div>
+    )
 }

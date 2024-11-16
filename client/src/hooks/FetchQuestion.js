@@ -1,60 +1,76 @@
-//fetch question hook to fetch api data and set value to store
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { getServerData } from "../helper/helper";
 
-import { useEffect, useState } from "react"
-import {useDispatch} from "react-redux";
-import data,{answers} from "../database/data"
-//redux actions
-import * as Action from '../redux/question_reducer'
-//fetch question hook to fetch api data and set value to store
-export const useFetchQuestion=()=>{
-    const dispatch=useDispatch();
-    const [getData,setGetData]=useState({isLoading:false, apiData:[],serverError:null})
-  
-    useEffect(()=>{
-        setGetData(prev=>({...prev,isLoading:true}));
+/** Redux actions */
+import * as Action from '../redux/question_reducer';
 
-        //async functn to fetch backend data
+/** Fetch question hook to fetch API data and set value to store */
+export const useFetchQuestion = () => { // Fixed typo here
+    const dispatch = useDispatch();   
+    const [getData, setGetData] = useState({
+        isLoading: false, 
+        apiData: [], 
+        serverError: null
+    });
 
-        (async()=>{
-            try{
-                let question=await data;
+    useEffect(() => {
+        // Start loading
+        setGetData(prev => ({ ...prev, isLoading: true }));
 
-                if(question.length>0){
-                    setGetData(prev=>({...prev,isLoading:false}));
-                    setGetData(prev=>({...prev,apiData:{question , answers}}));
+        /** Async function to fetch backend data */
+        (async () => {
+            try {
 
-                    //dispatch allows to call an action and update store
+                console.log(process.env.REACT_APP_SERVER_HOSTNAME);
+                // Fetch questions and answers from server
+                const [{ questions, answers }] = await getServerData(
+                    `${process.env.REACT_APP_SERVER_HOSTNAME}/api/questions`,
+                    (data) => data
+                );
 
-                    dispatch(Action.startExamAction({question , answers}))
-                }else{
+                // Check if questions exist
+                if (questions.length > 0) {
+                    // Update state with data
+                    setGetData(prev => ({
+                        ...prev, 
+                        isLoading: false, 
+                        apiData: questions
+                    }));
+
+                    /** Dispatch an action to store questions and answers in Redux */
+                    dispatch(Action.startExamAction({ question: questions, answers }));
+                } else {
                     throw new Error("No questions available");
                 }
-
-            }catch(error){
-                setGetData(prev=>({...prev,isLoading:false}));
-                setGetData(prev=>({...prev,serverError:error}));
+            } catch (error) {
+                // Set error state
+                setGetData(prev => ({
+                    ...prev,
+                    isLoading: false,
+                    serverError: error.message || error // Ensure error is a string
+                }));
             }
         })();
-    },[dispatch]);
-return [getData,setGetData]
+    }, [dispatch]); // Ensure this effect runs only once
 
-}
+    return [getData, setGetData];
+};
 
-
-//moveaction dispatch function
-export const MoveNextQuestion=()=>async(dispatch)=>{
-    try{
-dispatch(Action.moveNextAction());//inc trace by 1
-    }catch(error){
-        console.log(error)
+/** MoveAction Dispatch function */
+export const MoveNextQuestion = () => async (dispatch) => {
+    try {
+        dispatch(Action.moveNextAction()); /** Increase trace by 1 */
+    } catch (error) {
+        console.log(error);
     }
-}
+};
 
-//prevaction dispatch functn
-export const MovePrevQuestion=()=>async(dispatch)=>{
-    try{
-dispatch(Action.movePrevAction());//dec trace by 1
-    }catch(error){
-        console.log(error)
+/** PrevAction Dispatch function */
+export const MovePrevQuestion = () => async (dispatch) => {
+    try {
+        dispatch(Action.movePrevAction()); /** Decrease trace by 1 */
+    } catch (error) {
+        console.log(error);
     }
-}
+};

@@ -66,3 +66,53 @@ input[type='text']:focus {
 .btn:hover {
     background-color: #21a1f1;
 }
+
+/* In main.css */
+
+/* Container for the logo */
+.logo-container {
+    text-align: center; /* Centers the logo horizontally */
+    margin-bottom: 20px; /* Adds space below the logo */
+  }
+  
+  /* Style for the logo image */
+  .logo {
+    width: 120px; /* Adjust the width to make the logo smaller */
+    height: auto; /* Maintains the aspect ratio of the logo */
+    max-width: 100%; /* Prevents the logo from being stretched beyond its container */
+  }
+  /* In main.css */
+
+/* In main.css */
+
+.error-message {
+    color: #fff; /* White text color for contrast */
+    background-color: red; /* Red background for error */
+    margin-top: 20px; /* Space between error and the input field */
+    padding: 10px 20px; /* Adds space around the text */
+    font-size: 16px; /* Slightly larger font for better visibility */
+    font-weight: bold; /* Bold text to emphasize the error */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    text-align: center; /* Center-aligns the text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow around the message */
+    animation: shake 0.5s ease-in-out; /* Shake animation to grab attention */
+}
+
+/* Animation to shake the error message */
+@keyframes shake {
+    0% {
+        transform: translateX(-10px);
+    }
+    25% {
+        transform: translateX(10px);
+    }
+    50% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
