@@ -14,7 +14,7 @@ h2 {
 }
 
 ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
 }
 
@@ -22,6 +22,7 @@ li {
     margin: 15px 0;
     display: flex;
     align-items: center;
+    list-style: none;
 }
 
 input[type='radio'] {

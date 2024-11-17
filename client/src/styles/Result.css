@@ -1,139 +1,111 @@
-/* General container for the whole result page */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  /* Title styling */
-  .title {
-    font-size: 2.5rem; /* Large font size */
-    font-weight: bold;
-    color: #2575fc; /* Blue color for title */
-    text-align: center;
-    margin-bottom: 40px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Light shadow for depth */
-  }
-  
-  /* The result details section container */
-  .result {
-  
-    border-radius: 8px;
-    padding: 20px;
-    width: 100%;
-    max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Light shadow around result box */
-    margin-bottom: 30px; /* Space between the result section and the table */
-  }
-  
-  /* Flex layout for individual result rows */
-  .flex {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 1rem;
-  }
-  
-  /* Bold text for result values */
-  .bold {
-    font-weight: bold;
-    /* Highlight result values in blue */
-  }
-  
-  /* Button to restart quiz */
-  .start {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .start .btn {
-    padding: 10px 20px;
-    font-size: 1.1rem;
-    background-color: #2575fc;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .start .btn:hover {
-    background-color: #1a63b8; /* Darker shade on hover */
-  }
-  
-  /* Container for the result table */
-  .containers {
-    margin-top: 40px;
-    width: 100%;
-    max-width: 800px; /* Max width of the table */
-    box-sizing: border-box;
-  }
-  
-  /* Table styling */
-  table {
-    width: 100%;
-    border-collapse: collapse; /* Merge table borders */
-  }
-  
-  .table-header {
-    background-color: #2575fc;
-    color: white;
-  }
-  
-  .table-header .table-row td {
-    padding: 12px;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  .table-body td {
-    padding: 12px;
-    text-align: left;
-    border-top: 1px solid #ddd; /* Light border between rows */
-  }
-  
-  .table-body:hover {
-    background-color: red ;
-    color:aqua
-    
-  }
-  
-  .table-body td:last-child {
-    font-weight: bold;
-    color: green; /* Green for "Passed" */
-  }
-  
-  .table-body td.failed {
-    color: red; /* Red for "Failed" */
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .title {
-      font-size: 2rem; /* Smaller title font */
-    }
-  
-    .flex span {
-      font-size: 0.9rem; /* Slightly smaller font for result labels */
-    }
-  
-    .bold {
-      font-size: 1rem; /* Smaller bold text on mobile */
-    }
-  
-    .start .btn {
-      font-size: 1rem;
-      padding: 8px 16px;
-    }
-  
-    .table-header .table-row td,
-    .table-body td {
-      padding: 8px; /* Reduced padding on smaller screens */
-      font-size: 0.9rem;
-    }
-  }
-  
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #222;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.bold {
+  font-weight: bold;
+  color: #f4f4f4;
+}
+
+.result {
+  margin-bottom: 30px;
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+}
+
+.correct-answers {
+  margin-top: 20px;
+}
+
+.correct-answers h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #444;
+  color: #fff;
+  margin-top: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+table thead {
+  background-color: #555;
+  text-align: left;
+}
+
+table thead th {
+  padding: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+table tbody tr {
+  transition: background-color 0.3s;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #333;
+}
+
+table tbody tr:hover {
+  background-color: #555;
+}
+
+table td, table th {
+  padding: 12px;
+  border: 1px solid #666;
+}
+
+table td {
+  text-align: left;
+}
+
+.start {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.start .btn {
+  padding: 10px 20px;
+  background-color: #2aff95;
+  color: #000;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+}
+
+.start .btn:hover {
+  background-color: #27d87a;
+  color: #fff;
+}
+

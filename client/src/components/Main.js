@@ -35,10 +35,11 @@ export default function Main() {
             </h1>
 
             <ol>
-                <li>5 questions will be asked one after another.</li>
-                <li>10 points are awarded for each correct answer.</li>
-                <li>Three options are provided and you can choose only one option.</li>
-                <li>The result will be declared after you answer all the five questions.</li>
+                <li>1. Five questions will be asked one after another.</li>
+                <li>2. Ten points are awarded for each correct answer.</li>
+                <li>3. Three options are provided and you can choose only one option.</li>
+                <li>4. One minute is allocated to attempt all the five questions</li>
+                <li>5. The result as well as correct answers will be declared at the end</li>
             </ol>
 
             <form id="form" onSubmit={startQuiz}>  {/* Handle form submission */}
