@@ -5,7 +5,7 @@ import { PushAnswer } from '../hooks/setResult';
 /** redux store import */
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-
+import '../styles/quiz.css'
 export default function Quiz() {
     const [check, setChecked] = useState(undefined);
     const [timeLeft, setTimeLeft] = useState(60); // 1 minute in seconds

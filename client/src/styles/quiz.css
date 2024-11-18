@@ -1,3 +1,4 @@
+/* quiz.css */
 .questions {
     max-width: 500px;
     margin: 20px auto;
@@ -16,38 +17,18 @@ h2 {
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
 li {
     margin: 15px 0;
     display: flex;
-    align-items: center;
-    list-style: none;
+    align-items: center; /* Align radio button and label vertically */
+    gap: 10px; /* Add space between radio button and label */
 }
 
 input[type='radio'] {
-    display: none; /* Hide the default radio button */
-}
-
-label {
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background-color: #5c636a;
-    color: white;
-    transition: background-color 0.3s;
-    position: relative;
-}
-
-label:hover {
-    background-color: #61dafb;
-}
-
-input[type='radio']:checked + label {
-    background-color: #21a1f1;
-}
-
-.check {
+    appearance: none; /* Remove the default radio button appearance */
     width: 20px;
     height: 20px;
     border: 2px solid #61dafb;
@@ -57,17 +38,37 @@ input[type='radio']:checked + label {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0; /* Prevent the radio button from shrinking */
 }
 
-input[type='radio']:checked + label .check {
-    background-color: #61dafb;
-}
-
-.check.cheked::after {
+input[type='radio']::after {
     content: '';
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background: white;
+    background: transparent;
     position: absolute;
+}
+
+input[type='radio']:checked::after {
+    background: white; /* Show the inner circle when checked */
+}
+
+label {
+    cursor: pointer;
+    flex: 1; /* Ensure the label spans evenly across the available space */
+    padding: 10px 15px;
+    border-radius: 5px;
+    background-color: #5c636a;
+    color: white;
+    transition: background-color 0.3s;
+    text-align: left; /* Align text to the left */
+}
+
+label:hover {
+    background-color: #61dafb;
+}
+
+input[type='radio']:checked + label {
+    background-color: #21a1f1;
 }

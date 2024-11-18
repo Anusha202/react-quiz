@@ -1,111 +1,117 @@
+/* Container Styling */
 .container {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 900px;
+  margin: 30px auto;
   padding: 20px;
-  background-color: #222;
-  border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  background-color: #1e2430;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Title Styling */
 .title {
-  font-size: 2.5rem;
   text-align: center;
+  font-size: 2em;
+  color: #2aff95;
+  text-transform: uppercase;
   margin-bottom: 20px;
-  color: #fff;
-}
-
-.flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 10px 0;
-}
-
-.bold {
+  letter-spacing: 1px;
   font-weight: bold;
-  color: #f4f4f4;
 }
 
-.result {
-  margin-bottom: 30px;
-  background-color: #333;
-  padding: 15px;
-  border-radius: 8px;
-  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.4);
+/* Container for Result and Answers */
+.result-container {
+  display: flex; /* Align elements side by side */
+  justify-content: space-between; /* Push items to edges */
+  gap: 20px; /* Add spacing between the sections */
+  margin-top: 20px; /* Add spacing above the sections */
 }
 
+/* Result Summary Styling */
+.result-card {
+  flex: 1; /* Let it take equal space */
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #333a45;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1em;
+}
+
+.result-card h3 {
+  margin-bottom: 20px;
+  color: #2aff95;
+  font-size: 1.4em;
+  text-transform: uppercase;
+}
+
+/* Styling labels and values in result summary */
+.result-card .label {
+  display: inline-block;
+  width: 140px; /* Align all labels */
+  font-weight: bold;
+  color: #aaa;
+}
+
+.result-card .value {
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Correct Answers Styling */
 .correct-answers {
-  margin-top: 20px;
+  flex: 1; /* Let it take equal space */
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #333a45;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1em;
 }
 
 .correct-answers h2 {
-  text-align: center;
-  color: #fff;
-  margin-bottom: 15px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #444;
-  color: #fff;
-  margin-top: 10px;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-table thead {
-  background-color: #555;
-  text-align: left;
-}
-
-table thead th {
-  padding: 10px;
-  font-weight: bold;
+  margin-bottom: 20px;
+  color: #61dafb;
+  font-size: 1.4em;
   text-transform: uppercase;
 }
 
-table tbody tr {
-  transition: background-color 0.3s;
+.correct-answers .answer {
+  margin-bottom: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #444b55;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  font-size: 0.95em;
+  line-height: 1.5;
 }
 
-table tbody tr:nth-child(even) {
-  background-color: #333;
+.correct-answers .answer strong {
+  color: #2aff95;
 }
 
-table tbody tr:hover {
-  background-color: #555;
-}
-
-table td, table th {
-  padding: 12px;
-  border: 1px solid #666;
-}
-
-table td {
-  text-align: left;
-}
-
+/* Restart Button Styling */
 .start {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.start .btn {
-  padding: 10px 20px;
-  background-color: #2aff95;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.2rem;
+.btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 8px;
+  background-color: #21a1f1;
+  color: white;
+  font-size: 1em;
   text-transform: uppercase;
-  cursor: pointer;
-  transition: background-color 0.3s, color 0.3s;
   text-decoration: none;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.start .btn:hover {
-  background-color: #27d87a;
-  color: #fff;
+.btn:hover {
+  background-color: #2aff95;
+  box-shadow: 0 6px 15px rgba(42, 255, 149, 0.6);
 }
-

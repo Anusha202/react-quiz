@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 /** Custom Hook */
 import { useFetchQuestion } from '../hooks/FetchQuestion'
 import { updateResult } from '../hooks/setResult'
-
+// import '../styles/quiz.css'
 
 export default function Questions({ onChecked }) {
 

@@ -5,7 +5,7 @@ export default [
         options:[
             ' A relational database',
              'A NoSQL database',
-             ' A web server'
+             'A web server'
         ]
     },
     {

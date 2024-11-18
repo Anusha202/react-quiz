@@ -1,125 +1,168 @@
+/* General Body Styling */
 body {
-    background-color: #282c34;
-    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #2c3e50, #34495e);
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     color: white;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Main Container */
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+    width: 800px;
+    margin: 10px;
     padding: 20px;
-    border-radius: 10px;
-    background-color: #3a3f47;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-}
-
-.title {
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    color: #f1f1f1;
     text-align: center;
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    animation: fadeIn 1s ease-in-out;
 }
 
-ol {
-    margin: 20px 0;
-    padding-left: 20px;
+/* Title Styling */
+.title {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #2aff95;
+    margin-bottom: 15px;
 }
 
-li {
+/* Instructions Section */
+.instructions {
+    display: flex;
+    flex-direction: column; /* Ensure items are stacked vertically */
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Ensure the content is center-aligned */
+    margin: 0 auto; /* Center horizontally within the parent */
+    max-width: 600px; /* Limit the width for better readability */
+    height: auto; /* Remove excessive height constraint */
+}
+
+.instructions p {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #b2bec3;
     margin-bottom: 10px;
 }
 
-form {
-    margin-bottom: 20px;
+.instructions ol {
+    text-align: left; /* Aligns the text of the list items to the left */
+    margin: 0;
+    padding-left: 0; /* Remove default padding for cleaner look */
+    list-style-position: inside; /* Keep numbers inside the container */
 }
 
-input[type='text'] {
-    width: 100%;
-    padding: 10px;
-    border: 2px solid #61dafb;
-    border-radius: 5px;
-    background-color: #4a4e57;
-    color: white;
+.instructions li {
+    margin-bottom: 10px;
     font-size: 1em;
+    text-align: left; /* Ensure left-alignment for readability */
+}
+
+/* Input Field */
+input[type='text'] {
+    width: 50%;
+    padding: 10px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 8px;
+    background: #4a4e57;
+    color: white;
+    font-size: 1.1em;
+    transition: all 0.3s;
 }
 
 input[type='text']:focus {
     outline: none;
-    border-color: #21a1f1;
+    box-shadow: 0 0 10px #2aff95;
+    background: #555c69;
 }
 
+/* Start Button */
 .start {
-    text-align: center;
+    margin-top: 15px;
 }
 
 .btn {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #61dafb;
-    color: #282c34;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    transition: background-color 0.3s;
+    background: #2aff95;
+    color: #000;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1em;
 }
 
 .btn:hover {
-    background-color: #21a1f1;
+    background: #27d87a;
+    color: #fff;
 }
 
-/* In main.css */
-
-/* Container for the logo */
+/* Logo Section */
 .logo-container {
-    text-align: center; /* Centers the logo horizontally */
-    margin-bottom: 20px; /* Adds space below the logo */
-  }
-  
-  /* Style for the logo image */
-  .logo {
-    width: 120px; /* Adjust the width to make the logo smaller */
-    height: auto; /* Maintains the aspect ratio of the logo */
-    max-width: 100%; /* Prevents the logo from being stretched beyond its container */
-  }
-  /* In main.css */
-
-/* In main.css */
-
-.error-message {
-    color: #fff; /* White text color for contrast */
-    background-color: red; /* Red background for error */
-    margin-top: 20px; /* Space between error and the input field */
-    padding: 10px 20px; /* Adds space around the text */
-    font-size: 16px; /* Slightly larger font for better visibility */
-    font-weight: bold; /* Bold text to emphasize the error */
-    border-radius: 8px; /* Rounded corners for a modern look */
-    text-align: center; /* Center-aligns the text */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow around the message */
-    animation: shake 0.5s ease-in-out; /* Shake animation to grab attention */
+    margin-bottom: 10px;
 }
 
-/* Animation to shake the error message */
-@keyframes shake {
-    0% {
-        transform: translateX(-10px);
-    }
-    25% {
-        transform: translateX(10px);
+.logo {
+    width: 100px;
+    height: auto;
+    border-radius: 50%;
+    animation: float 2.5s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
     }
     50% {
-        transform: translateX(-10px);
-    }
-    75% {
-        transform: translateX(10px);
-    }
-    100% {
-        transform: translateX(0);
+        transform: translateY(-10px);
     }
 }
-.timer {
+
+/* Error Message */
+.error-message {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px auto; /* Center horizontally with smaller gap */
+    font-weight: bold;
     text-align: center;
-    font-size: 1.5em;
-    color: #ff2a66; /* Highlighted color for urgency */
-    margin-bottom: 20px;
-  }
-  
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    animation: shake 0.3s ease-in-out;
+    width: 50%; /* Control the width of the message */
+    display: flex; /* Ensure it's a flex container */
+    justify-content: center; /* Center the content horizontally */
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25%, 75% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
